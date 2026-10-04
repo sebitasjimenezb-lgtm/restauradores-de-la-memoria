@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restauradores de la Memoria - Colegio Tom Adams IED</title>
+  
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Carga de A-Frame para el Museo Virtual 3D -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Restauradores de la Memoria</h1>
+    <p>Colegio Tom Adams IED | Portal Web y Galería Virtual 3D</p>
+  </header>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav>
+    <button onclick="showSection('inicio')" class="nav-btn active">Inicio</button>
+    <button onclick="showSection('museo')" class="nav-btn">Museo Virtual 3D</button>
+    <button onclick="showSection('eventos')" class="nav-btn">Eventos y Salidas</button>
+    <button onclick="showSection('registro')" class="nav-btn">Registrar Aporte</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- SECCIÓN 1: INICIO -->
+    <section id="inicio" class="section active">
+      <div class="card">
+        <h2>Bienvenido al Proyecto de Memoria Institucional</h2>
+        <p>Esta plataforma digital está diseñada para divulgar, preservar y gestionar las iniciativas culturales, testimonios, reconocimientos y salidas pedagógicas del Colegio Tom Adams IED.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>🏛️ Museo Escolar</h3>
+          <p>Explora objetos históricos y modelos 3D desarrollados por los estudiantes mediante fotogrametría.</p>
+        </div>
+        <div class="card">
+          <h3>📅 Eventos y Exposiciones</h3>
+          <p>Mantente al día con los cronogramas culturales y muestras artísticas de la institución.</p>
+        </div>
+        <div class="card">
+          <h3>🚌 Salidas Pedagógicas</h3>
+          <p>Consulta las bitácoras y galerías de las experiencias formativas fuera del aula.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: MUSEO VIRTUAL A-FRAME 3D -->
+    <section id="museo" class="section">
+      <h2>Museo Virtual 3D - Sala Interactiva</h2>
+      <p>Usa el mouse para rotar la visión y las teclas W, A, S, D para desplazarte por la sala virtual.</p>
+      
+      <div class="museum-container">
+        <!-- ESCENA A-FRAME INTEGRADA -->
+        <a-scene embedded style="width: 100%; height: 100%;">
+          <!-- Fondo / Cielo -->
+          <a-sky color="#1a1a2e"></a-sky>
+
+          <!-- Piso -->
+          <a-plane position="0 0 0" rotation="-90 0 0" width="12" height="12" color="#333333"></a-plane>
+
+          <!-- Paredes del Museo -->
+          <a-plane position="0 2.5 -6" width="12" height="5" color="#4a4e69"></a-plane>
+          <a-plane position="-6 2.5 0" rotation="0 90 0" width="12" height="5" color="#4a4e69"></a-plane>
+          <a-plane position="6 2.5 0" rotation="0 -90 0" width="12" height="5" color="#4a4e69"></a-plane>
+
+          <!-- Luces -->
+          <a-ambient-light color="#ffffff" intensity="0.6"></a-ambient-light>
+          <a-point-light position="0 4 0" intensity="0.8"></a-point-light>
+
+          <!-- Pedestal 1 y Objeto 3D -->
+          <a-box position="-2.5 0.5 -3" width="0.8" height="1" depth="0.8" color="#dddddd"></a-box>
+          <a-torus-knot position="-2.5 1.4 -3" radius="0.25" radius-tubular="0.05" color="#e76f51" animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"></a-torus-knot>
+          <a-text value="Objeto Historico 1\n(Modelo Luma AI)" position="-2.5 2 -3" align="center" scale="0.6 0.6 0.6" color="#ffffff"></a-text>
+
+          <!-- Pedestal 2 y Objeto 3D -->
+          <a-box position="2.5 0.5 -3" width="0.8" height="1" depth="0.8" color="#dddddd"></a-box>
+          <a-dodecahedron position="2.5 1.4 -3" radius="0.3" color="#2a9d8f" animation="property: rotation; to: 360 360 0; loop: true; dur: 8000"></a-dodecahedron>
+          <a-text value="Reconocimiento 3D\n(Fotogrametria)" position="2.5 2 -3" align="center" scale="0.6 0.6 0.6" color="#ffffff"></a-text>
+
+          <!-- Cuadro Fotográfico en Pared -->
+          <a-plane position="0 2.5 -5.9" width="3" height="2" color="#ffffff"></a-plane>
+          <a-text value="Colegio Tom Adams IED\nGaleria de la Memoria" position="0 2.5 -5.8" align="center" color="#000000" scale="0.8 0.8 0.8"></a-text>
+
+          <!-- Cámara de Usuario -->
+          <a-entity position="0 1.6 3">
+            <a-camera></a-camera>
+          </a-entity>
+        </a-scene>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: EVENTOS Y SALIDAS -->
+    <section id="eventos" class="section">
+      <h2>Eventos y Salidas Pedagógicas</h2>
+      <div class="grid" id="listaEventos">
+        <div class="card">
+          <h3>Salida al Centro Histórico</h3>
+          <p><strong>Fecha:</strong> 15 de Octubre</p>
+          <p>Registro fotográfico y recorrido para la recolección de memoria oral con los estudiantes de la jornada.</p>
+        </div>
+        <div class="card">
+          <h3>Exposición de Fotogrametría</h3>
+          <p><strong>Fecha:</strong> 5 de Noviembre</p>
+          <p>Muestra virtual y presencial de objetos escaneados en 3D utilizando herramientas como Luma AI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: REGISTRO DE APORTES -->
+    <section id="registro" class="section">
+      <h2>Registrar Nuevo Aporte o Memoria</h2>
+      <form id="formAporte">
+        <label for="titulo">Título de la pieza o memoria:</label>
+        <input type="text" id="titulo" required placeholder="Ej. Fotografía Fundadores 1998">
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria">
+          <option value="fotografia">Fotografía</option>
+          <option value="objeto_3d">Objeto 3D / Fotogrametría</option>
+          <option value="testimonio">Testimonio Escrito</option>
+          <option value="reconocimiento">Reconocimiento</option>
+        </select>
+
+        <label for="autor">Nombre del Estudiante / Autor:</label>
+        <input type="text" id="autor" required placeholder="Tu nombre completo">
+
+        <label for="descripcion">Descripción detallada:</label>
+        <textarea id="descripcion" rows="4" required placeholder="Describe la reseña histórica del objeto..."></textarea>
+
+        <button type="submit" class="btn-submit">Guardar Registro</button>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Restauradores de la Memoria - Colegio Tom Adams IED | Desarrollado en Programación Web</p>
+  </footer>
+
+  <!-- Script de lógica JavaScript externa -->
+  <script src="script.js"></script>
+</body>
+</html>
